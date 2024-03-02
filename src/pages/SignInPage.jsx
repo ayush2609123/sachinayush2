@@ -5,7 +5,7 @@ import './SignInPage.css'; // Import CSS for styling
 
 const auth = getAuth(app);
 
-const SignInPage = () => {
+const SignInPage = ({setUser}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -13,7 +13,8 @@ const SignInPage = () => {
 
     const signInUser = () => {
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => {
+            .then((res) => {
+                setUser(res.user);
                 console.log("User signed in successfully");
                 setSuccessMessage("Sign in successful.");
                 setErrorMessage("");

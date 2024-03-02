@@ -13,8 +13,9 @@ const SignUpPage = () => {
 
     const signUpUser = () => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
+            .then((res) => {
                 console.log('Successfully created user account');
+                console.log("result: ",res)
                 setSuccessMessage('User account created successfully.');
                 setErrorMessage('');
             })
